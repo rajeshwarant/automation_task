@@ -10,10 +10,10 @@ def xml_update(x,y):
         myroot = mytree.getroot()
         for depart in myroot.iter('DEPART'):
             updated_x = datetime.now() + timedelta(days = x)
-            depart.text = str(updated_x)
+            depart.text = updated_x.strftime("%Y%m%d")
         for r in myroot.iter('RETURN'):
             updated_y = datetime.now() + timedelta(days = y)
-            r.text = str(updated_y)
+            r.text = updated_y.strftime("%Y%m%d")
         mytree.write(curr_dir +"/modified.xml")
         print (" Modified xml file created successfully in this path {}".format(curr_dir+"/modified.xml"))
 
@@ -21,4 +21,3 @@ def xml_update(x,y):
         print("please provide the correct number")
 
 xml_update(10,15)
-     
