@@ -5,7 +5,7 @@ from datetime import datetime
 import datetime as dt
 
 def timestamp_to_pst_converter(timestamp):
-    your_dt = dt.datetime.fromtimestamp(int(timestamp)/1000)
+    your_dt = dt.datetime.utcfromtimestamp(int(timestamp)/1000)
     convert_date = your_dt.strftime("%Y-%m-%d %H:%M:%S")
     datetime_obj = datetime.strptime(convert_date,"%Y-%m-%d %H:%M:%S")
     pst_tz = timezone('US/Pacific')
