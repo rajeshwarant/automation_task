@@ -35,4 +35,4 @@ def delete_element_from_json(*del_elements):
         json.dump(input_data, output_file, indent=2)
         print (" Modified json file created successfully in this path {}".format(cur_dir+"/modified.json"))
 
-delete_element_from_json('outParams','retdt','statecode')
+delete_element_from_json('outParams','appdate')
