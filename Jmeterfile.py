@@ -15,6 +15,8 @@ def timestamp_to_pst_converter(timestamp):
 def jmeter_modify(file_name):
     curr_dir = os.getcwd()
     df = pd.read_csv(curr_dir+"/"+file_name, sep=',')
+    pd.set_option('display.width', 200)
+    pd.set_option('display.max_columns', None)
     result_col = [i for i in df.columns if i == 'timeStamp' or i == 'label' or i == 'responseCode' or i == 'responseMessage' or i == 'failureMessage']
     result_df = df[df['responseCode'] == 504]
     result_df['timeStamp'] = result_df['timeStamp'].apply(timestamp_to_pst_converter)
