@@ -15,6 +15,15 @@ def delete_keys_from_dict(dict_del, keys):
             delete_keys_from_dict(v, keys)
     return dict_del
 
+def delete_items_from_list(list_del, keys):
+    """
+    Delete the items present in the list.
+    """
+    for item in keys:
+        if item in list_del:
+            list_del.remove(item)
+    return list_del
+
 def delete_element_from_json(*del_elements):
     """
     Delete one or more elements from json input file. 
@@ -30,6 +39,8 @@ def delete_element_from_json(*del_elements):
             del input_data[key]
         if isinstance(value, dict):
              value = delete_keys_from_dict(value, del_elements)
+        if isinstance(value, list):
+             value = delete_items_from_list(value, del_elements)
 
     with open ("modified.json", "w") as output_file:
         json.dump(input_data, output_file, indent=2)
